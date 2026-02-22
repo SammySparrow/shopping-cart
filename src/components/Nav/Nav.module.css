@@ -1,0 +1,51 @@
+.nav,
+.nav ul,
+.linkwrap {
+  display: flex;
+  margin: 0;
+}
+.nav ul {
+  padding: 0;
+  gap: 8px;
+}
+.nav {
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-bottom: 1px solid var(--grey-light);
+  position: sticky;
+  top: 0;
+  background-color: rgb(253 250 255 / 0.2);
+  box-shadow: 0px 0px 1px var(--grey-light);
+  backdrop-filter: blur(8px);
+}
+.linkwrap {
+  align-items: center;
+}
+.linkwrap {
+  gap: 20px;
+}
+.nav li,
+.nav a {
+  list-style: none;
+  text-decoration: none;
+  color: var(--black);
+}
+.nav li a {
+  padding: 8px;
+  text-align: center;
+  display: inline-block;
+}
+.logo {
+  width: 120px;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.nav a {
+  transition: all 0.2s ease;
+}
+.nav a:hover {
+  color: var(--primary);
+}
