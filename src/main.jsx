@@ -3,10 +3,10 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
-import ErrorPage from "./ErrorPage.jsx";
-import Home from "./components/Home/Home.jsx";
-import Shop from "./Shop.jsx";
-import Checkout from "./Checkout.jsx";
+import ErrorPage from "./pages/ErrorPage/ErrorPage.jsx";
+import Home from "./pages/Home/Home.jsx";
+import Shop from "./pages/Shop/Shop.jsx";
+import Checkout from "./pages/Checkout/Checkout.jsx";
 
 const router = createBrowserRouter([
   {
