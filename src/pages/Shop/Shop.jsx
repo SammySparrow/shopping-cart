@@ -2,6 +2,7 @@ import { Link, useOutletContext } from "react-router";
 import LoadingCircle from "../../components/LoadingWheel/LoadingCircle";
 import styles from "./Shop.module.css";
 import Button from "../../components/Button/Button";
+import ItemCard from "../../components/ItemCard/ItemCard";
 
 export default function Shop() {
   const { loading, error, shopItems } = useOutletContext();
@@ -22,4 +23,5 @@ export default function Shop() {
         </Link>
       </div>
     );
+  return <ItemCard props={shopItems[0]} />;
 }
