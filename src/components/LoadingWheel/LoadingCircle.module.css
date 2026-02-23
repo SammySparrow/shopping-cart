@@ -1,0 +1,41 @@
+svg {
+  stroke: var(--primary);
+}
+.loader {
+  stroke-dasharray: 220;
+  animation:
+    loading 2s infinite ease,
+    spin 1.25s infinite linear;
+}
+.backdrop {
+  position: absolute;
+  opacity: 0.2;
+}
+@keyframes loading {
+  0% {
+    stroke-dashoffset: 220;
+  }
+  3% {
+    stroke-dashoffset: 220;
+  }
+  47% {
+    stroke-dashoffset: 440;
+  }
+  53% {
+    stroke-dashoffset: 440;
+  }
+  97% {
+    stroke-dashoffset: 660;
+  }
+  100% {
+    stroke-dashoffset: 660;
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
