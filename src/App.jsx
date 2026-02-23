@@ -12,11 +12,11 @@ export default function App() {
       <Nav count={cartList.length} />
       <Outlet
         context={{
-          cart: cartList,
-          addToCart: setCartList,
-          shopItems: shopItems,
-          error: error,
-          loading: loading,
+          cartList,
+          setCartList,
+          shopItems,
+          error,
+          loading,
         }}
       />
     </>

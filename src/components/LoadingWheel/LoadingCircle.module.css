@@ -1,7 +1,5 @@
-svg {
-  stroke: var(--primary);
-}
 .loader {
+  stroke: var(--primary);
   stroke-dasharray: 220;
   animation:
     loading 2s infinite ease,
