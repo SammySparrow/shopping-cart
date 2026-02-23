@@ -3,10 +3,11 @@ import LoadingCircle from "../../components/LoadingWheel/LoadingCircle";
 import styles from "./Shop.module.css";
 import Button from "../../components/Button/Button";
 import ItemCard from "../../components/ItemCard/ItemCard";
-import StarDisplay from "../../components/StarDisplay/StarDisplay";
+import { useState } from "react";
 
 export default function Shop() {
   const { loading, error, shopItems } = useOutletContext();
+  const [filteredList, setFilteredList] = useState(null);
 
   if (loading)
     return (
@@ -24,5 +25,11 @@ export default function Shop() {
         </Link>
       </div>
     );
-  return <StarDisplay />;
+  return (
+    <div className={styles.display}>
+      {shopItems.map((item) => (
+        <ItemCard key={item.id} props={item} />
+      ))}
+    </div>
+  );
 }

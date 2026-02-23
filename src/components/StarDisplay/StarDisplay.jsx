@@ -55,7 +55,7 @@ export default function StarDisplay({ rating = 2.2, count = 20 }) {
   }
   return (
     <p className={styles.row}>
-      {starCount}({count})
+      {starCount} {rating} ({count})
     </p>
   );
 }
