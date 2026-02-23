@@ -1,0 +1,30 @@
+.primary {
+  font-family: inherit;
+  width: 96px;
+  height: 40px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  background-color: var(--primary);
+  color: var(--white);
+  transition: all 0.15s ease-in-out;
+}
+
+.primary:hover {
+  background-color: var(--primary-light);
+}
+
+.secondary {
+  composes: primary;
+  border-color: var(--primary);
+  color: var(--primary);
+  background: transparent;
+}
+
+.secondary:hover {
+  background: var(--primary);
+  color: var(--white);
+}

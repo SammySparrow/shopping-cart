@@ -1,0 +1,25 @@
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - var(--nav-height));
+  gap: 48px;
+  flex-wrap: wrap;
+  img {
+    width: max(50vw, 320px);
+    border-radius: 48px;
+  }
+  div {
+    width: max(30vw, 320px);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  a {
+    width: fit-content;
+  }
+}
+
+.highlight {
+  color: var(--primary);
+}

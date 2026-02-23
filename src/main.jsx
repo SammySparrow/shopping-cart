@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import ErrorPage from "./ErrorPage.jsx";
-import Home from "./Home.jsx";
+import Home from "./components/Home/Home.jsx";
 import Shop from "./Shop.jsx";
 import Checkout from "./Checkout.jsx";
 
