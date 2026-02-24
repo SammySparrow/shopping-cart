@@ -1,8 +1,8 @@
 .primary {
   font-family: inherit;
-  min-width: 96px;
-  padding-left: 8px;
-  padding-right: 8px;
+  width: fit-content;
+  padding-left: 12px;
+  padding-right: 12px;
   height: 40px;
   border: 1px solid transparent;
   border-radius: 4px;
