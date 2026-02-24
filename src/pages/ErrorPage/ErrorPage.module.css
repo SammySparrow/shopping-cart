@@ -1,0 +1,13 @@
+.message {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  p {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+}

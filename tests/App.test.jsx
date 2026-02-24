@@ -67,6 +67,19 @@ describe("Route tests", () => {
     const link = screen.getByRole("link", { name: "Click Here" });
 
     await user.click(link);
-    expect(screen.getByText("item display 3"));
+    expect(screen.getByText("item display 3")).toBeInTheDocument();
+  });
+
+  it("Displays error page if link is not found", async () => {
+    const FaultyLink = vi.fn(() => <Link to="faulty">Click Here</Link>);
+    const errorRoute = createMemoryRouter([
+      { path: "/", element: <FaultyLink />, errorElement: <ErrorPage /> },
+    ]);
+    render(<RouterProvider router={errorRoute} />);
+    const user = userEvent.setup();
+    const link = screen.getByRole("link", { name: "Click Here" });
+
+    await user.click(link);
+    expect(screen.getByText(/an error/i)).toBeInTheDocument();
   });
 });
