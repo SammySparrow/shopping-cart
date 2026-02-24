@@ -13,7 +13,6 @@ export function useStoreData() {
       })
       .then((r) => {
         setShopItems(r);
-        console.log(r);
       })
       .catch((error) => setError(error))
       .finally(() => setLoading(false));

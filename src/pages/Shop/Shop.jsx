@@ -35,5 +35,14 @@ export default function Shop() {
     );
   if (/[0-9]/.test(pageId) && pageId <= shopItems.length) {
     return <Item item={shopItems[parseInt(pageId) - 1]} array={shopItems} />;
+  } else {
+    return (
+      <div className={styles.message}>
+        <p>An error has occured</p>
+        <Link to="/">
+          <Button type="secondary" label="Return home" />
+        </Link>
+      </div>
+    );
   }
 }
