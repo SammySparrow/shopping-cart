@@ -14,7 +14,7 @@ export default function Nav({ count }) {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="shop">Shop</Link>
+            <Link to="shop/browse">Shop</Link>
           </li>
           <li>
             <Link to="checkout">Checkout</Link>

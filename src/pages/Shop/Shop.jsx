@@ -1,4 +1,4 @@
-import { Link, useOutletContext } from "react-router";
+import { Link, useOutletContext, useParams } from "react-router";
 import LoadingCircle from "../../components/LoadingWheel/LoadingCircle";
 import styles from "./Shop.module.css";
 import Button from "../../components/Button/Button";
@@ -8,6 +8,7 @@ import { useState } from "react";
 export default function Shop() {
   const { loading, error, shopItems } = useOutletContext();
   const [filteredList, setFilteredList] = useState(null);
+  const { id } = useParams();
 
   if (loading)
     return (
@@ -25,11 +26,12 @@ export default function Shop() {
         </Link>
       </div>
     );
-  return (
-    <div className={styles.display}>
-      {shopItems.map((item) => (
-        <ItemCard key={item.id} props={item} />
-      ))}
-    </div>
-  );
+  if (id === "browse")
+    return (
+      <div className={styles.display}>
+        {shopItems.map((item) => (
+          <ItemCard key={item.id} props={item} />
+        ))}
+      </div>
+    );
 }

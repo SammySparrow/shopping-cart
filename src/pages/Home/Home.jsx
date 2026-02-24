@@ -12,7 +12,7 @@ export default function Home() {
           <span className={styles.highlight}>all your needs</span>
         </h1>
         <p>Consume product, buy thing, make happy, dopamine good</p>
-        <Link to="shop">
+        <Link to="shop/browse">
           <Button label="Shop now" />
         </Link>
       </div>
