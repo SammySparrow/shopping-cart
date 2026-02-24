@@ -2,9 +2,26 @@ import Button from "../../components/Button/Button";
 import QuantityInput from "../../components/QuantityInput/QuantityInput";
 import StarDisplay from "../../components/StarDisplay/StarDisplay";
 import { Link } from "react-router";
+import { useState } from "react";
 import styles from "./Item.module.css";
 
 export default function Item({ item, array }) {
+  const [quantity, setQuantity] = useState(1);
+
+  function handleQuantityChange(e) {
+    if (e.target.value <= 0 || e.target.value >= 100) return;
+    setQuantity(e.target.value);
+  }
+  function handleQuantityIncrement() {
+    let quantityParse = parseInt(quantity);
+    if (quantityParse === 99) return;
+    setQuantity(quantityParse + 1);
+  }
+  function handleQuantityDecrement() {
+    let quantityParse = parseInt(quantity);
+    if (quantityParse === 1) return;
+    setQuantity(quantityParse - 1);
+  }
   const related = array.filter(
     (arrItem) =>
       item.category === arrItem.category && item.title !== arrItem.title,
@@ -25,7 +42,12 @@ export default function Item({ item, array }) {
         </div>
         <p>{item.description}</p>
 
-        <QuantityInput />
+        <QuantityInput
+          value={quantity}
+          onChange={handleQuantityChange}
+          increment={handleQuantityIncrement}
+          decrement={handleQuantityDecrement}
+        />
         <Button label="Add to cart" />
       </div>
       <div className={styles.more}>
