@@ -3,12 +3,13 @@ import LoadingCircle from "../../components/LoadingWheel/LoadingCircle";
 import styles from "./Shop.module.css";
 import Button from "../../components/Button/Button";
 import ItemCard from "../../components/ItemCard/ItemCard";
+import Item from "../Item/Item";
 import { useState } from "react";
 
 export default function Shop() {
   const { loading, error, shopItems } = useOutletContext();
   const [filteredList, setFilteredList] = useState(null);
-  const { id } = useParams();
+  const { pageId } = useParams();
 
   if (loading)
     return (
@@ -26,7 +27,7 @@ export default function Shop() {
         </Link>
       </div>
     );
-  if (id === "browse")
+  if (pageId === "browse")
     return (
       <div className={styles.display}>
         {shopItems.map((item) => (
@@ -34,4 +35,7 @@ export default function Shop() {
         ))}
       </div>
     );
+  if (/[0-9]/.test(pageId) && pageId <= shopItems.length) {
+    return <Item item={shopItems[parseInt(pageId) - 1]} array={shopItems} />;
+  }
 }

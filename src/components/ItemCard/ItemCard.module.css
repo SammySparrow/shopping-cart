@@ -4,7 +4,7 @@
 }
 .card {
   width: 320px;
-  height: 480px;
+  height: 510px;
   padding: 8px;
   border: 1px solid var(--grey-light);
   display: flex;
@@ -28,4 +28,9 @@
 .title {
   font-weight: 500;
   font-size: 1.25rem;
+}
+
+.price {
+  composes: title;
+  color: #08a045;
 }

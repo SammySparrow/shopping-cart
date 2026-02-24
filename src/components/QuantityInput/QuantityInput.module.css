@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+}
+.quantity {
+  margin-right: 12px;
+}
+.base {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--primary);
+}
+.button {
+  composes: base;
+  font-weight: 700;
+  background-color: var(--primary);
+  color: var(--white);
+}
+.input {
+  composes: base;
+  text-align: center;
+  border-right: none;
+  border-left: none;
+}
