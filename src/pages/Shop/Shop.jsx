@@ -4,11 +4,9 @@ import styles from "./Shop.module.css";
 import Button from "../../components/Button/Button";
 import ItemCard from "../../components/ItemCard/ItemCard";
 import Item from "../Item/Item";
-import { useState } from "react";
 
 export default function Shop() {
   const { loading, error, shopItems } = useOutletContext();
-  const [filteredList, setFilteredList] = useState(null);
   const { pageId } = useParams();
 
   if (loading)

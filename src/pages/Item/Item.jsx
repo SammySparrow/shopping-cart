@@ -2,7 +2,7 @@ import Button from "../../components/Button/Button";
 import QuantityInput from "../../components/QuantityInput/QuantityInput";
 import StarDisplay from "../../components/StarDisplay/StarDisplay";
 
-export default function Item({ item, array }) {
+export default function Item({ item }) {
   return (
     <section>
       <div>
