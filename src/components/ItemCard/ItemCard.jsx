@@ -11,7 +11,7 @@ export default function ItemCard({ props }) {
           <p className={styles.title}>{props.title}</p>
         </div>
         <div>
-          <p className={styles.price}>{`$${props.price}`}</p>
+          <p className={styles.price}>{`$${props.price.toFixed(2)}`}</p>
           <StarDisplay rating={props.rating.rate} count={props.rating.count} />
         </div>
       </div>

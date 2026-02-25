@@ -38,7 +38,7 @@ export default function Item({ item, array, addToCart }) {
         <h3>{item.title}</h3>
         <div className={styles.row}>
           <StarDisplay rating={item.rating.rate} count={item.rating.count} />
-          <p className={styles.price}>{`$${item.price}`}</p>
+          <p className={styles.price}>{`$${item.price.toFixed(2)}`}</p>
         </div>
         <p>{item.description}</p>
 

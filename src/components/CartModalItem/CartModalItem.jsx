@@ -27,7 +27,7 @@ export default function CartModalItem({
       <img src={image} alt="" />
       <div>
         <h3>{title}</h3>
-        <p>{`$${price * quantity}`}</p>
+        <p>{`$${(price * quantity).toFixed(2)}`}</p>
       </div>
       <QuantityInput
         onChange={quantityChange}
