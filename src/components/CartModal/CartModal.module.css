@@ -57,10 +57,9 @@
   color: var(--price);
 }
 .buttons {
-  a button {
+  display: flex;
+  gap: 12px;
+  button {
     width: 190px;
-  }
-  a:first-of-type {
-    margin-right: 12px;
   }
 }

@@ -54,13 +54,12 @@ export default function CartModal({
             </span>
           </p>
           <div className={styles.buttons}>
-            <Link to="/shop/browse">
-              <Button
-                type="secondary"
-                label="Continue shopping"
-                onClick={toggle}
-              />
-            </Link>
+            <Button
+              type="secondary"
+              label="Continue shopping"
+              onClick={toggle}
+            />
+
             <Link to="/checkout">
               <Button type="secondary" label="Checkout" onClick={toggle} />
             </Link>

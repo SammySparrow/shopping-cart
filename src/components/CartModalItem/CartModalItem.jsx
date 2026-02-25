@@ -17,13 +17,15 @@ export default function CartModalItem({
   }
 
   function incrementQuantity() {
-    if (quantity === 99) return;
-    quantityEdit(id, quantity + 1);
+    let parseQuantity = parseInt(quantity);
+    if (parseQuantity === 99) return;
+    quantityEdit(id, parseQuantity + 1);
   }
 
   function decrementQuantity() {
-    if (quantity === 1) return;
-    quantityEdit(id, quantity - 1);
+    let parseQuantity = parseInt(quantity);
+    if (parseQuantity === 1) return;
+    quantityEdit(id, parseQuantity - 1);
   }
   return (
     <div className={styles.wrapper}>
