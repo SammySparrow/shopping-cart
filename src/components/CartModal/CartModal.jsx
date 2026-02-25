@@ -30,18 +30,42 @@ export default function CartModal({
           </Link>
         </>
       ) : (
-        cartList.map((cartItem) => (
-          <CartModalItem
-            key={cartItem.id}
-            id={cartItem.id}
-            title={cartItem.title}
-            image={cartItem.image}
-            price={cartItem.price}
-            quantity={cartItem.quantity}
-            quantityEdit={quantityEdit}
-            deleteItem={deleteItem}
-          />
-        ))
+        <>
+          <div>
+            {cartList.map((cartItem) => (
+              <CartModalItem
+                key={cartItem.id}
+                id={cartItem.id}
+                title={cartItem.title}
+                image={cartItem.image}
+                price={cartItem.price}
+                quantity={cartItem.quantity}
+                quantityEdit={quantityEdit}
+                deleteItem={deleteItem}
+              />
+            ))}
+          </div>
+          <p>
+            Total Price:{" "}
+            <span className={styles.price}>
+              {cartList
+                .reduce((a, b) => a + b.price * b.quantity, 0)
+                .toFixed(2)}
+            </span>
+          </p>
+          <div className={styles.buttons}>
+            <Link to="/shop/browse">
+              <Button
+                type="secondary"
+                label="Continue shopping"
+                onClick={toggle}
+              />
+            </Link>
+            <Link to="/checkout">
+              <Button type="secondary" label="Checkout" onClick={toggle} />
+            </Link>
+          </div>
+        </>
       )}
     </dialog>
   );

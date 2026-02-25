@@ -1,5 +1,6 @@
 import QuantityInput from "../QuantityInput/QuantityInput";
 import DeleteButton from "../DeleteButton/DeleteButton";
+import styles from "./CartModalItem.module.css";
 
 export default function CartModalItem({
   id,
@@ -25,11 +26,11 @@ export default function CartModalItem({
     quantityEdit(id, quantity - 1);
   }
   return (
-    <div>
-      <img src={image} alt="" />
-      <div>
+    <div className={styles.wrapper}>
+      <img className={styles.img} src={image} alt="" />
+      <div className={styles.innerWrap}>
         <h3>{title}</h3>
-        <p>{`$${(price * quantity).toFixed(2)}`}</p>
+        <p className={styles.price}>{`$${(price * quantity).toFixed(2)}`}</p>
       </div>
       <QuantityInput
         onChange={quantityChange}

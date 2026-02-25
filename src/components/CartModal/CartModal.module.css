@@ -47,7 +47,20 @@
   color: var(--grey-light);
   font-size: 1.5rem;
   transition: color 0.15s ease;
+  margin-right: 4px;
 }
 .close:hover {
   color: var(--grey);
+}
+.price {
+  font-weight: 500;
+  color: var(--price);
+}
+.buttons {
+  a button {
+    width: 190px;
+  }
+  a:first-of-type {
+    margin-right: 12px;
+  }
 }
