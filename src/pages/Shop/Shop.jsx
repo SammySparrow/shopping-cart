@@ -6,7 +6,8 @@ import ItemCard from "../../components/ItemCard/ItemCard";
 import Item from "../Item/Item";
 
 export default function Shop() {
-  const { loading, error, shopItems, addToCart } = useOutletContext();
+  const { loading, error, shopItems, addToCart, toggleModalDisplay } =
+    useOutletContext();
   const { pageId } = useParams();
 
   if (loading)
@@ -39,6 +40,7 @@ export default function Shop() {
         item={shopItems[parseInt(pageId) - 1]}
         array={shopItems}
         addToCart={addToCart}
+        toggle={toggleModalDisplay}
       />
     );
   } else {

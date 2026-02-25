@@ -56,6 +56,7 @@ export default function App() {
           shopItems,
           error,
           loading,
+          toggleModalDisplay,
         }}
       />
     </>

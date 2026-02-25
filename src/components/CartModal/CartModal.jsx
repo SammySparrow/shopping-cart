@@ -48,6 +48,7 @@ export default function CartModal({
           <p>
             Total Price:{" "}
             <span className={styles.price}>
+              $
               {cartList
                 .reduce((a, b) => a + b.price * b.quantity, 0)
                 .toFixed(2)}

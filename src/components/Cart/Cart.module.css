@@ -5,14 +5,15 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-}
-.icon {
-  transform: scale(1.5);
+  cursor: pointer;
   fill: var(--black);
   transition: all 0.2s ease;
 }
-.icon:hover {
+.cart:hover {
   fill: var(--primary);
+}
+.icon {
+  transform: scale(1.5);
 }
 .count {
   position: absolute;

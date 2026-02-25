@@ -5,7 +5,7 @@ import { Link } from "react-router";
 import { useState } from "react";
 import styles from "./Item.module.css";
 
-export default function Item({ item, array, addToCart }) {
+export default function Item({ item, array, addToCart, toggle }) {
   const [quantity, setQuantity] = useState(1);
 
   function handleQuantityChange(e) {
@@ -54,9 +54,10 @@ export default function Item({ item, array, addToCart }) {
           decrement={handleQuantityDecrement}
         />
         <Button
-          onClick={() =>
-            addToCart(item.id, item.title, item.price, item.image, quantity)
-          }
+          onClick={() => {
+            addToCart(item.id, item.title, item.price, item.image, quantity);
+            toggle();
+          }}
           label="Add to cart"
         />
       </div>
