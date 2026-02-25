@@ -2,8 +2,9 @@ import { useRef, useEffect } from "react";
 import styles from "./CartModal.module.css";
 import Button from "../Button/Button";
 import { Link } from "react-router";
+import CartModalItem from "../CartModalItem/CartModalItem";
 
-export default function CartModal({ cartList, display, toggle }) {
+export default function CartModal({ cartList, display, toggle, quantityEdit }) {
   const ref = useRef();
   useEffect(() => {
     display ? ref.current.showModal() : ref.current.close();
@@ -23,7 +24,17 @@ export default function CartModal({ cartList, display, toggle }) {
           </Link>
         </>
       ) : (
-        <p>aloo</p>
+        cartList.map((cartItem) => (
+          <CartModalItem
+            key={cartItem.id}
+            id={cartItem.id}
+            title={cartItem.title}
+            image={cartItem.image}
+            price={cartItem.price}
+            quantity={cartItem.quantity}
+            quantityEdit={quantityEdit}
+          />
+        ))
       )}
     </dialog>
   );

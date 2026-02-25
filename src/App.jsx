@@ -27,6 +27,13 @@ export default function App() {
     setCartList(newCartList);
   }
 
+  function editQuantity(id, quantity) {
+    const newCartList = structuredClone(cartList);
+    const target = newCartList.find((item) => item.id === id);
+    target.quantity = quantity;
+    setCartList(newCartList);
+  }
+
   return (
     <>
       <Nav toggle={toggleModalDisplay} count={cartList.length} />
@@ -34,6 +41,7 @@ export default function App() {
         cartList={cartList}
         toggle={toggleModalDisplay}
         display={displayModal}
+        quantityEdit={editQuantity}
       />
       <Outlet
         context={{
