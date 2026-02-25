@@ -1,8 +1,8 @@
 import styles from "./Cart.module.css";
 
-export default function Cart({ count }) {
+export default function Cart({ count, toggle }) {
   return (
-    <div className={styles.cart}>
+    <div onClick={toggle} className={styles.cart}>
       <svg
         className={styles.icon}
         xmlns="http://www.w3.org/2000/svg"

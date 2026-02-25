@@ -50,7 +50,7 @@ export default function Item({ item, array, addToCart }) {
         />
         <Button
           onClick={() =>
-            addToCart(item.title, item.price, item.image, quantity)
+            addToCart(item.id, item.title, item.price, item.image, quantity)
           }
           label="Add to cart"
         />

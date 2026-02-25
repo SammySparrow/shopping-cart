@@ -1,0 +1,30 @@
+import { useRef, useEffect } from "react";
+import styles from "./CartModal.module.css";
+import Button from "../Button/Button";
+import { Link } from "react-router";
+
+export default function CartModal({ cartList, display, toggle }) {
+  const ref = useRef();
+  useEffect(() => {
+    display ? ref.current.showModal() : ref.current.close();
+  }, [display]);
+
+  return (
+    <dialog className={styles.modal} ref={ref} onCancel={toggle}>
+      <button className={styles.close} onClick={toggle}>
+        &#128473;
+      </button>
+      <h2>Cart</h2>
+      {cartList.length <= 0 ? (
+        <>
+          <p>Nothing here yet!</p>{" "}
+          <Link to="/shop/browse">
+            <Button onClick={toggle} label="Go to shop" />
+          </Link>
+        </>
+      ) : (
+        <p>aloo</p>
+      )}
+    </dialog>
+  );
+}
