@@ -12,7 +12,12 @@ export default function CartModalItem({
   deleteItem,
 }) {
   function quantityChange(e) {
-    if (e.target.value <= 0 || e.target.value >= 100) return;
+    if (
+      e.target.value <= 0 ||
+      e.target.value >= 100 ||
+      /[^0-9]/.test(e.target.value)
+    )
+      return;
     quantityEdit(id, e.target.value);
   }
 

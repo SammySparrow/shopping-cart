@@ -9,7 +9,12 @@ export default function Item({ item, array, addToCart }) {
   const [quantity, setQuantity] = useState(1);
 
   function handleQuantityChange(e) {
-    if (e.target.value <= 0 || e.target.value >= 100) return;
+    if (
+      e.target.value <= 0 ||
+      e.target.value >= 100 ||
+      /[^0-9]/.test(e.target.value)
+    )
+      return;
     setQuantity(e.target.value);
   }
   function handleQuantityIncrement() {
