@@ -4,11 +4,13 @@ import {
   createMemoryRouter,
   Link,
   RouterProvider,
+  useOutletContext,
   useParams,
 } from "react-router";
 import App from "../src/App";
 import ErrorPage from "../src/pages/ErrorPage/ErrorPage";
 import userEvent from "@testing-library/user-event";
+import { useState } from "react";
 
 describe("Route tests", () => {
   const Home = vi.fn(() => <p>mockhome</p>);
@@ -83,3 +85,55 @@ describe("Route tests", () => {
     expect(screen.getByText(/an error/i)).toBeInTheDocument();
   });
 });
+
+/* describe("Cart tests", () => {
+  const MockChild = vi.fn(() => {
+    const { addToCart } = useOutletContext();
+    const [mockCounter, setMockCounter] = useState(1)
+    const mockObj = {
+      title: "testOne",
+      image: "",
+      price: "",
+      quantity: "",
+    };
+    const mockObjAlt = {
+      title: "testTwo",
+      image: "",
+      price: "",
+      quantity: "",
+    };
+    return (
+      <>
+        <button
+          onClick={() =>
+            addToCart(
+              mockObj.title,
+              mockObj.image,
+              mockObj.price,
+              mockObj.quantity,
+            )
+          }
+        >
+          Mock Test One
+        </button>
+        <p></p>
+      </>
+    );
+  });
+  const cartRoute = createMemoryRouter([
+    {
+      path: "/",
+      element: <App />,
+      children: [{ index: true, element: <MockChild /> }],
+    },
+  ]);
+
+  it("Adds item to cart", async () => {
+    render(<RouterProvider router={cartRoute} />)
+    const user = userEvent.setup();
+    const button = screen.getByRole("button", { name: "Mock Test One" });
+    await user.click(button)
+    expect
+  })
+});
+ */

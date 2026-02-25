@@ -18,7 +18,6 @@ export default function App() {
     const newCartList = structuredClone(cartList);
     newCartList.push(newItem);
     setCartList(newCartList);
-    console.log(cartList);
   }
 
   return (
