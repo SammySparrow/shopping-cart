@@ -34,6 +34,12 @@ export default function App() {
     setCartList(newCartList);
   }
 
+  function deleteFromCart(id) {
+    const newCartList = structuredClone(cartList);
+    const filteredList = newCartList.filter((item) => item.id !== id);
+    setCartList(filteredList);
+  }
+
   return (
     <>
       <Nav toggle={toggleModalDisplay} count={cartList.length} />
@@ -42,6 +48,7 @@ export default function App() {
         toggle={toggleModalDisplay}
         display={displayModal}
         quantityEdit={editQuantity}
+        deleteItem={deleteFromCart}
       />
       <Outlet
         context={{

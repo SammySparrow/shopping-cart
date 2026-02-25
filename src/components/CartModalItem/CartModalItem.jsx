@@ -1,4 +1,5 @@
 import QuantityInput from "../QuantityInput/QuantityInput";
+import DeleteButton from "../DeleteButton/DeleteButton";
 
 export default function CartModalItem({
   id,
@@ -7,6 +8,7 @@ export default function CartModalItem({
   price,
   quantity,
   quantityEdit,
+  deleteItem,
 }) {
   function quantityChange(e) {
     if (e.target.value <= 0 || e.target.value >= 100) return;
@@ -35,6 +37,7 @@ export default function CartModalItem({
         increment={incrementQuantity}
         decrement={decrementQuantity}
       />
+      <DeleteButton onClick={deleteItem} id={id} />
     </div>
   );
 }

@@ -1,0 +1,13 @@
+.button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.bin {
+  fill: var(--delete);
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+.bin:hover {
+  opacity: 1;
+}
