@@ -7,13 +7,26 @@ export default function App() {
   const { shopItems, error, loading } = useStoreData();
   const [cartList, setCartList] = useState([]);
 
+  function addToCart(title, price, image, quantity) {
+    if (cartList.some((item) => item.title === title)) return;
+    const newItem = {
+      title: title,
+      price: price,
+      image: image,
+      quantity: quantity,
+    };
+    const newCartList = structuredClone(cartList);
+    newCartList.push(newItem);
+    setCartList(newCartList);
+    console.log(cartList);
+  }
+
   return (
     <>
       <Nav count={cartList.length} />
       <Outlet
         context={{
-          cartList,
-          setCartList,
+          addToCart,
           shopItems,
           error,
           loading,

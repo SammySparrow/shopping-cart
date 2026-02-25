@@ -5,7 +5,7 @@ import { Link } from "react-router";
 import { useState } from "react";
 import styles from "./Item.module.css";
 
-export default function Item({ item, array }) {
+export default function Item({ item, array, addToCart }) {
   const [quantity, setQuantity] = useState(1);
 
   function handleQuantityChange(e) {
@@ -48,13 +48,22 @@ export default function Item({ item, array }) {
           increment={handleQuantityIncrement}
           decrement={handleQuantityDecrement}
         />
-        <Button label="Add to cart" />
+        <Button
+          onClick={() =>
+            addToCart(item.title, item.price, item.image, quantity)
+          }
+          label="Add to cart"
+        />
       </div>
       <div className={styles.more}>
         <p>More like this:</p>
         <div className={styles.related}>
           {related.map((rel) => (
-            <Link to={`/shop/${rel.id}`}>
+            <Link
+              key={rel.id}
+              to={`/shop/${rel.id}`}
+              onClick={() => setQuantity(1)}
+            >
               <img className={styles.preview} src={rel.image} alt="" />
             </Link>
           ))}

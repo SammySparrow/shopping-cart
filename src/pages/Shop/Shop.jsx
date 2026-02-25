@@ -6,7 +6,7 @@ import ItemCard from "../../components/ItemCard/ItemCard";
 import Item from "../Item/Item";
 
 export default function Shop() {
-  const { loading, error, shopItems } = useOutletContext();
+  const { loading, error, shopItems, addToCart } = useOutletContext();
   const { pageId } = useParams();
 
   if (loading)
@@ -34,7 +34,13 @@ export default function Shop() {
       </div>
     );
   if (/[0-9]/.test(pageId) && pageId <= shopItems.length) {
-    return <Item item={shopItems[parseInt(pageId) - 1]} array={shopItems} />;
+    return (
+      <Item
+        item={shopItems[parseInt(pageId) - 1]}
+        array={shopItems}
+        addToCart={addToCart}
+      />
+    );
   } else {
     return (
       <div className={styles.message}>
