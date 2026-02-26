@@ -31,7 +31,7 @@ export default function CartModal({
         </>
       ) : (
         <>
-          <div>
+          <div className={styles.items}>
             {cartList.map((cartItem) => (
               <CartModalItem
                 key={cartItem.id}

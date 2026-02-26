@@ -63,3 +63,23 @@
     width: 190px;
   }
 }
+.items {
+  overflow-y: scroll;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+    to left,
+    var(--white),
+    var(--grey-light),
+    var(--grey),
+    var(--grey-light),
+    var(--white)
+  );
+  div:first-child {
+    border-top: none;
+  }
+  div:last-child {
+    border-bottom: none;
+  }
+}
