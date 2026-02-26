@@ -57,6 +57,9 @@ export default function App() {
           error,
           loading,
           toggleModalDisplay,
+          cartList,
+          editQuantity,
+          deleteFromCart,
         }}
       />
     </>
