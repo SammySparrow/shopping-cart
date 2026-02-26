@@ -4,13 +4,11 @@ import {
   createMemoryRouter,
   Link,
   RouterProvider,
-  useOutletContext,
   useParams,
 } from "react-router";
 import App from "../src/App";
 import ErrorPage from "../src/pages/ErrorPage/ErrorPage";
 import userEvent from "@testing-library/user-event";
-import { useState } from "react";
 
 describe("Route tests", () => {
   const Home = vi.fn(() => <p>mockhome</p>);
@@ -22,6 +20,11 @@ describe("Route tests", () => {
     if (/[0-9]/.test(pageId))
       return <p>item display {testArray[parseInt(pageId) - 1]}</p>;
   });
+
+  vi.mock(import("../src/components/CartModal/CartModal"), () => ({
+    default: vi.fn(),
+  }));
+
   const mockRouter = createMemoryRouter([
     {
       path: "/",

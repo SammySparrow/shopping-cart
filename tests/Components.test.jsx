@@ -32,7 +32,7 @@ describe("Components", () => {
     ]);
     it("Correctly displays price with dollar sign", () => {
       render(<RouterProvider router={mockRouter} />);
-      expect(screen.getByText("$20")).toBeInTheDocument();
+      expect(screen.getByText("$20.00")).toBeInTheDocument();
     });
   });
 
