@@ -6,7 +6,7 @@ import Cart from "../src/components/Cart/Cart";
 import ItemCard from "../src/components/ItemCard/ItemCard";
 import QuantityInput from "../src/components/QuantityInput/QuantityInput";
 import CartModal from "../src/components/CartModal/CartModal";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 
 describe("Components", () => {
   describe("Cart component", () => {
