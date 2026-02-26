@@ -37,35 +37,86 @@ describe("Components", () => {
   });
 
   describe("Quantity component", () => {
-    const MockParent = vi.fn(() => {
-      const [value, setValue] = useState(5);
-      const increment = vi.fn(() => setValue(value + 1));
-      const decrement = vi.fn(() => setValue(value - 1));
+    const MockParent = vi.fn(({ initVal }) => {
+      const [value, setValue] = useState(initVal);
+
+      const changeValue = vi.fn((e) => {
+        if (
+          e.target.value <= 0 ||
+          e.target.value >= 100 ||
+          /[^0-9]/.test(e.target.value)
+        )
+          return;
+        setValue(e.target.value);
+      });
+
+      const increment = vi.fn(() => {
+        let quantityParse = parseInt(value);
+        if (quantityParse === 99) return;
+        setValue(quantityParse + 1);
+      });
+
+      const decrement = vi.fn(() => {
+        let quantityParse = parseInt(value);
+        if (quantityParse === 1) return;
+        setValue(quantityParse - 1);
+      });
+
       return (
         <QuantityInput
           value={value}
+          onChange={changeValue}
           increment={increment}
           decrement={decrement}
         />
       );
     });
+
     it("Displays default value", () => {
-      render(<MockParent />);
+      render(<MockParent initVal="5" />);
       expect(screen.getByDisplayValue("5")).toBeInTheDocument();
     });
+
     it("+ button increments value", async () => {
-      render(<MockParent />);
+      render(<MockParent initVal="5" />);
       const user = userEvent.setup();
       const link = screen.getByRole("button", { name: "+" });
       await user.click(link);
       expect(screen.getByDisplayValue("6")).toBeInTheDocument();
     });
+
     it("- button decrements the value", async () => {
-      render(<MockParent />);
+      render(<MockParent initVal="5" />);
       const user = userEvent.setup();
       const link = screen.getByRole("button", { name: "-" });
       await user.click(link);
       expect(screen.getByDisplayValue("4")).toBeInTheDocument();
+    });
+
+    it("Will not increment past 99", async () => {
+      render(<MockParent initVal="99" />);
+      const user = userEvent.setup();
+      const link = screen.getByRole("button", { name: "+" });
+      await user.click(link);
+      expect(screen.getByDisplayValue("99")).toBeInTheDocument();
+    });
+
+    it("Will not decrement below 1", async () => {
+      render(<MockParent initVal="1" />);
+      const user = userEvent.setup();
+      const link = screen.getByRole("button", { name: "-" });
+      await user.click(link);
+      expect(screen.getByDisplayValue("1")).toBeInTheDocument();
+    });
+
+    it("Doesn't allow non numerical inputs", async () => {
+      render(<MockParent initVal="5" />);
+      const user = userEvent.setup();
+      const input = screen.getByRole("textbox");
+
+      await user.type(input, "abc!@#$%^&*()ABC");
+
+      expect(input).toHaveValue("5");
     });
   });
 });
