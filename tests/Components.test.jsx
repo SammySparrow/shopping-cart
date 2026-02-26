@@ -1,11 +1,12 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeAll } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { createMemoryRouter, RouterProvider, Outlet } from "react-router";
 import userEvent from "@testing-library/user-event";
 import Cart from "../src/components/Cart/Cart";
 import ItemCard from "../src/components/ItemCard/ItemCard";
 import QuantityInput from "../src/components/QuantityInput/QuantityInput";
-import { useState } from "react";
+import CartModal from "../src/components/CartModal/CartModal";
+import { useState, useRef, useEffect } from "react";
 
 describe("Components", () => {
   describe("Cart component", () => {
@@ -117,6 +118,46 @@ describe("Components", () => {
       await user.type(input, "abc!@#$%^&*()ABC");
 
       expect(input).toHaveValue("5");
+    });
+  });
+
+  describe("CartModal component", () => {
+    beforeAll(() => {
+      HTMLDialogElement.prototype.show = vi.fn();
+      HTMLDialogElement.prototype.showModal = vi.fn();
+      HTMLDialogElement.prototype.close = vi.fn();
+    });
+
+    it("Displays a message when cart is empty", () => {
+      const cartModalRouter = createMemoryRouter([
+        { path: "/", element: <CartModal cartList={[]} /> },
+      ]);
+      render(<RouterProvider router={cartModalRouter} />);
+      expect(screen.getByText(/nothing here yet/i)).toBeInTheDocument();
+    });
+
+    it("Displays the total price of items in cartList", () => {
+      const testCart = [
+        {
+          id: 0,
+          title: "",
+          image: null,
+          price: 6.5,
+          quantity: 12,
+        },
+        {
+          id: 1,
+          title: "",
+          image: null,
+          price: 5,
+          quantity: 12,
+        },
+      ];
+      const cartModalRouter = createMemoryRouter([
+        { path: "/", element: <CartModal cartList={testCart} /> },
+      ]);
+      render(<RouterProvider router={cartModalRouter} />);
+      expect(screen.getByText("$138.00")).toBeInTheDocument();
     });
   });
 });
